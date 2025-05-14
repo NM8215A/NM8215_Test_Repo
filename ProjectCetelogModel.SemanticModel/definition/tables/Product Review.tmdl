@@ -1,0 +1,65 @@
+table 'Product Review'
+	lineageTag: 89dcf4af-40dc-47f9-956e-01df881cd3df
+
+	column ReviewID
+		dataType: int64
+		formatString: 0
+		lineageTag: c4a23f19-4287-4165-ae92-0ce2d3e8339a
+		summarizeBy: count
+		sourceColumn: ReviewID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1cd19ddf-bd1b-4b6e-af98-2e26ae6fc6bd
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating
+		dataType: int64
+		formatString: 0
+		lineageTag: c28f0477-ef4f-4142-b824-d850218964bb
+		summarizeBy: sum
+		sourceColumn: Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReviewText
+		dataType: string
+		lineageTag: 4dad1e10-d6a4-47e0-83be-5d5aabd09f65
+		summarizeBy: none
+		sourceColumn: ReviewText
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReviewDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3bf35817-f299-41e2-8318-7a0a99a651b3
+		summarizeBy: none
+		sourceColumn: ReviewDate
+
+		variation Variation
+			isDefault
+			relationship: 5ee3b95d-f365-45cd-b710-719c8c94d555
+			defaultHierarchy: LocalDateTable_cd870701-9118-42c6-b647-3f30a70cb134.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Product Review' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ReviewID = _t, ProductID = _t, Rating = _t, ReviewText = _t, ReviewDate = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"ReviewID", Int64.Type}, {"ProductID", Int64.Type}, {"Rating", Int64.Type}, {"ReviewText", type text}, {"ReviewDate", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

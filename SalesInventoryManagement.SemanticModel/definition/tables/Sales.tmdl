@@ -1,0 +1,105 @@
+table Sales
+	lineageTag: 8f87515a-b65d-436e-a097-1c384484a86e
+
+	column SaleID
+		dataType: int64
+		formatString: 0
+		lineageTag: 971af2eb-9fb5-452d-8b5e-fd0592f75cd8
+		summarizeBy: count
+		sourceColumn: SaleID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: cc82e6c0-932c-472d-83dc-4c42fff8cfca
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuantitySold
+		dataType: int64
+		formatString: 0
+		lineageTag: 460ccbd4-006d-4e51-aa58-46e54069c40e
+		summarizeBy: sum
+		sourceColumn: QuantitySold
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaleDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0518de87-2b1c-41fc-ada4-a6547c9ca4c2
+		summarizeBy: none
+		sourceColumn: SaleDate
+
+		variation Variation
+			isDefault
+			relationship: ebe57bc4-4e64-4aaa-b5d6-f36a6a55866b
+			defaultHierarchy: LocalDateTable_956025ac-cd73-4d98-93cd-71e559701f05.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Store
+		dataType: string
+		lineageTag: 90252dbc-c8ed-4a5b-b0fd-31ded3844f2a
+		summarizeBy: none
+		sourceColumn: Store
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salesperson
+		dataType: string
+		lineageTag: d9dd9efe-57e6-4447-8bcc-938df3b64647
+		summarizeBy: none
+		sourceColumn: Salesperson
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 55b967ef-eea1-4c68-9ad6-1ae44d7b1af6
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiscountApplied
+		dataType: double
+		lineageTag: aebb1c79-e384-4b25-bae1-19ca7863bf72
+		summarizeBy: sum
+		sourceColumn: DiscountApplied
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalAmount
+		dataType: string
+		lineageTag: 1d8d5b39-6de2-48fe-a873-523a14634278
+		summarizeBy: none
+		sourceColumn: TotalAmount
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentMethod
+		dataType: string
+		lineageTag: bd982e31-19c2-4308-b65d-0e112c09f78d
+		summarizeBy: none
+		sourceColumn: PaymentMethod
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [SaleID = _t, ProductID = _t, QuantitySold = _t, SaleDate = _t, Store = _t, Salesperson = _t, Region = _t, DiscountApplied = _t, TotalAmount = _t, PaymentMethod = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"SaleID", Int64.Type}, {"ProductID", Int64.Type}, {"QuantitySold", Int64.Type}, {"SaleDate", type datetime}, {"Store", type text}, {"Salesperson", type text}, {"Region", type text}, {"DiscountApplied", type number}, {"TotalAmount", type text}, {"PaymentMethod", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,109 @@
+table Projects
+	lineageTag: d0206648-10e8-40c7-8fc2-851cc4449300
+
+	column ProjectID
+		dataType: int64
+		formatString: 0
+		lineageTag: d07b41c3-b36a-4c94-aace-b210adf6a441
+		summarizeBy: count
+		sourceColumn: ProjectID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProjectName
+		dataType: string
+		lineageTag: 8f22581b-87b1-4e84-a644-b38c6c023e72
+		summarizeBy: none
+		sourceColumn: ProjectName
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 73601fe0-23d9-4ee9-966f-cb34915dce85
+		summarizeBy: none
+		sourceColumn: StartDate
+
+		variation Variation
+			isDefault
+			relationship: 927c48ae-3c79-4e96-a109-37bf3039c90c
+			defaultHierarchy: LocalDateTable_69c3bafe-bc01-40d6-a52d-ccb42dcd3405.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bb0e066b-59aa-4a20-b2cd-a2bef68aa127
+		summarizeBy: none
+		sourceColumn: EndDate
+
+		variation Variation
+			isDefault
+			relationship: 153b29cd-131e-4d2f-bbaf-e61586cf7a78
+			defaultHierarchy: LocalDateTable_d3e73830-6150-4dda-b34a-737863b18676.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Budget
+		dataType: int64
+		formatString: 0
+		lineageTag: 10970c92-4c97-4560-ae70-63d9de640c3f
+		summarizeBy: sum
+		sourceColumn: Budget
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: b6e33f26-a2ff-4bfd-a565-a8a58b42931e
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manager
+		dataType: string
+		lineageTag: 6fde2057-d451-4006-8b1d-12f44c0c84b9
+		summarizeBy: none
+		sourceColumn: Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column TeamSize
+		dataType: int64
+		formatString: 0
+		lineageTag: 003e1651-44cb-4d6a-b136-516c641f5730
+		summarizeBy: sum
+		sourceColumn: TeamSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column Client
+		dataType: string
+		lineageTag: 508d727f-6b1d-4508-9749-34694076ae82
+		summarizeBy: none
+		sourceColumn: Client
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: d797b9d9-02bd-4514-b5a7-1a95ccb6c7a2
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Projects = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ProjectID = _t, ProjectName = _t, StartDate = _t, EndDate = _t, Budget = _t, Status = _t, Manager = _t, TeamSize = _t, Client = _t, Location = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"ProjectID", Int64.Type}, {"ProjectName", type text}, {"StartDate", type datetime}, {"EndDate", type datetime}, {"Budget", Int64.Type}, {"Status", type text}, {"Manager", type text}, {"TeamSize", Int64.Type}, {"Client", type text}, {"Location", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

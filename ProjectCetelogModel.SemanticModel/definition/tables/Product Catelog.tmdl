@@ -1,0 +1,64 @@
+table 'Product Catelog'
+	lineageTag: f51a8d4e-8e4c-46e8-94ae-89ea7b28dba7
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: 22e35d28-d75e-4db3-8402-4030d3ae82ae
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: 9b23a86e-3fc2-43cf-b447-3d1839b09db7
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: cd07f685-7d90-4e70-9b3c-2aa762fe5922
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: int64
+		formatString: 0
+		lineageTag: 33c8668e-6b6b-4f4e-b9c4-bb347973a7cf
+		summarizeBy: none
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stock
+		dataType: int64
+		formatString: 0
+		lineageTag: e3cba636-2913-42b8-870d-b632d8b91766
+		summarizeBy: none
+		sourceColumn: Stock
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column = 'Product Catelog'[Price]*'Product Catelog'[Stock]
+		formatString: 0
+		lineageTag: 08cbc07f-c600-4728-bb9b-4fada0e66f41
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Product Catelog' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("dVdNd9s2EPwvPudAgARIHB3ZbtJnJW6cxge/HPgoSEZNEXokFdf59eXOggkIuheLllb7MTs7u3p8vBAX7y7+qPud7aaHm3PfufHc2+m5lHL6a9TF93ePF/T4tT+PT9Pre++fh+m1kPRdOf0li3x6vjz67jC9Xre2GXvfuYbsysKQXZ7BrqB4bT0MSThVKlhpWNHzF3vy/ZiYiYqCikLCTFM67dlGWUlkJUqOVsJP3a6SMiV9JCtYVdPjvesOrV3ZyYqSzxkFetzYfqxdClZVEUKCsxLZ9PxgW4q6af345IBKlVNVQhk2AvD+h+27o+3SMqXJUCyjIcj5tu6fbWpXMGoBDpEjwW60fWoH2CouQ1AP7vmDRccLjYpztiLPWx+S+wVvSY50cET2l7ujG9dN5zboUCyB/d6OnNjsK0eIomATasLnk+3r0fkusioLSlczywS14L6xXdzyMqd3Rc55S0LuzvZP9SnlWKmrqEBk+NX7ZZdyBWKUbELA39tut6qvMuRKZMGOgL/+t27G9nXpriQPRQhYAIUhxrMCD2TojCRA3te7yMAUAHJOiBC/875fRqGx+T1ikirYusPTmORS5SAV90RSARvf7VwAPPaXAQTJrZHgvT+ezkn/DAa7YvLlGaJ2k1FkowQPBmeWUy33p7pZD5oG4QXjkAN393NtJkquNMSkgq78IU6KQJaKBxv/bOuuPtgEsQohhGFYMZm3bm8TowK84iEExH+dXfOMHid0QFpCM2B5iQFrGjsM+3Mbt1tVEbA5WvBUt63tDutaVZGhVmYPSP51yux5ZZhrNLbkGcG37nrXpPMtCnBWBTPqxTe/NtO6jHSqIJwuJ+X3vRtfU1kx5CTsiAIroBndDzaMgZRR0zDPW1sP7GOGRgAaUYaw1JGP3Y9pWhIFUlAKEbQWkhVDOJtpEG+uFQ1ZyErBg6eZAECGlPPcpzVqA0YZbhl22WYamZ82mZkij/NS1IQP0+bByoz1JWPh4IFQAtHGtRjnZuGOivnm7Esy0Yber4KvBP/Fds0gkWGfKKpoWou71wgQqbI4oAKJ/H6i8CQP2KALVGDMptSCB9fFqgXAheReQlE357iJAilIEQyo1Nv6ZUVsCTFXPACKSriyq1QqfCAlWyGxK7ffu+bcvrGXWLPCAGqC/3O3GgGDNgvJxNYE8gc/nNy4Cq5kVCjG8O9uZ/thrN9YGhgsFU4XAuCDG9ZTj6UzD7NWYO7Rju5o031WYB1IwRzWGnO1ZIgyeTTMSODWv1zE6xWtCkKIBXm93/PhlWgc9pcsmEOaEHqo2+e4qxhNmXGFJTrR+1PC2Yy3ELcL58TWn9MxqQyvveCKILmz/tQm5ZXQCam4nSV5vnXj+MYhpwCPNCFs8ZtLkTtTQXGDBuG2mi6JIfA/YRJYG3CD/F93//hE+PRizZS8FxayZzRrYwhZ8dgd+voYj1O4ekPyGAT/kh6hGq4M9weVfLJ138ZDXlbcIVYMeP3ku5T+aLQIAwXtvp3kenEGYsXNeoK7YlP3b6AOMs/rGPv07ul1cE3dLrLC9iwYpYpgv3H9MWU7rkgZJB1f+dwf6s79nE/GhSrwBR3YWtFXb/juiFmGU/hXYMJmOx334cBfllLwJWNCKdSDL66JfxBJjON8qiH+fdCBeAFQyJy9gOSbOt5LVcnSGQwo5ltXsQLXpebyMORv3jkGa04obrj533uoYOYHohrevsms4XdNqN9QqR/3qdhAITQPraFC/jwPyRVagS1zG7Hlbup2QQfweGY7BPuySwZLhnsx/CzIZtW3PV8LCQ0Rk0Tw+38=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ProductID = _t, ProductName = _t, Category = _t, Price = _t, Stock = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"ProductID", Int64.Type}, {"ProductName", type text}, {"Category", type text}, {"Price", Int64.Type}, {"Stock", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

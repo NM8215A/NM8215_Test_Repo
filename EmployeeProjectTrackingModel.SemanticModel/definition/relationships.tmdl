@@ -1,0 +1,15 @@
+relationship 717d6de6-0b47-47e0-bddb-76987cad9be1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Employees.HireDate
+	toColumn: LocalDateTable_fdf15f5b-f3c2-4514-a355-4adce7028c4d.Date
+
+relationship 927c48ae-3c79-4e96-a109-37bf3039c90c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Projects.StartDate
+	toColumn: LocalDateTable_69c3bafe-bc01-40d6-a52d-ccb42dcd3405.Date
+
+relationship 153b29cd-131e-4d2f-bbaf-e61586cf7a78
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Projects.EndDate
+	toColumn: LocalDateTable_d3e73830-6150-4dda-b34a-737863b18676.Date
+

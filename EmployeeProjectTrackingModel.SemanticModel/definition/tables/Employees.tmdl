@@ -1,0 +1,103 @@
+table Employees
+	lineageTag: b8823223-70f6-434c-a59c-9008b6ea4b05
+
+	column EmployeeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 78c1eb5b-738a-44ad-8d3a-2eaa265ad639
+		summarizeBy: count
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: eeb1a58d-c3bb-43c5-b874-5c671512b2b3
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 9c28d805-241a-4bf6-a2bc-851892bc04d6
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: 41411fef-0f5f-476f-8c80-129bd887f60d
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column Position
+		dataType: string
+		lineageTag: 057121a4-0673-48a6-8512-9b838dbff7f3
+		summarizeBy: none
+		sourceColumn: Position
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salary
+		dataType: int64
+		formatString: 0
+		lineageTag: b3af4c6d-75dc-4455-8be6-0334d8772750
+		summarizeBy: sum
+		sourceColumn: Salary
+
+		annotation SummarizationSetBy = Automatic
+
+	column HireDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 293eb19e-735f-4339-9b06-c71806c8ce07
+		summarizeBy: none
+		sourceColumn: HireDate
+
+		variation Variation
+			isDefault
+			relationship: 717d6de6-0b47-47e0-bddb-76987cad9be1
+			defaultHierarchy: LocalDateTable_fdf15f5b-f3c2-4514-a355-4adce7028c4d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullTime
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ee512917-9f88-4ddc-94f5-4be4e30c72a3
+		summarizeBy: none
+		sourceColumn: FullTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 2fbb916d-d63a-4c23-822e-e62b8121a0d4
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: 0eb5e5a9-be3a-42c0-a1a0-f1f3b9ab43b2
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Employees = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [EmployeeID = _t, FirstName = _t, LastName = _t, Department = _t, Position = _t, Salary = _t, HireDate = _t, FullTime = _t, City = _t, Email = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"EmployeeID", Int64.Type}, {"FirstName", type text}, {"LastName", type text}, {"Department", type text}, {"Position", type text}, {"Salary", Int64.Type}, {"HireDate", type datetime}, {"FullTime", type logical}, {"City", type text}, {"Email", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

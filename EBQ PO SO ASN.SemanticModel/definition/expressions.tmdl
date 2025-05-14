@@ -1,0 +1,16 @@
+expression source_project = "its-managed-dbx-de-01-p" meta [IsParameterQuery=true, List={"its-managed-dbx-de-01-t", "its-managed-dbx-de-01-p", "its-managed-dbx-zap-d"}, DefaultValue="its-managed-dbx-de-01-p", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b2b7a934-e8b8-4a9a-bbcf-63c08c50b497
+	queryGroup: Parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression billing_project = "its-managed-dbx-de-01-p" meta [IsParameterQuery=true, List={"its-managed-data-sc-rpr-01-p ", "its-managed-dbx-de-01-p", "its-managed-dbx-de-01-t", "its-managed-dbx-zap-d"}, DefaultValue="its-managed-dbx-de-01-p", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b589177b-9504-4961-a034-3dc386a9a7b6
+	queryGroup: Parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

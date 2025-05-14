@@ -1,0 +1,102 @@
+table Products
+	lineageTag: e505cc49-14a8-4c49-b08b-9d21d4efa62e
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: c689cbf1-08f6-4169-b79d-65f4e78aa4fe
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: d5e706a6-280e-496c-afa3-0264baece71b
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 3dc3080b-d0aa-484c-9bb7-08f2b62ee034
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price
+		dataType: double
+		lineageTag: 35560512-5395-4841-afdb-59039654c532
+		summarizeBy: none
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column StockQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 0558f95c-8ece-4d36-80a6-9d94059f5100
+		summarizeBy: none
+		sourceColumn: StockQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supplier
+		dataType: string
+		lineageTag: 6033d5d4-5f3a-4622-8832-10a0fec887fc
+		summarizeBy: none
+		sourceColumn: Supplier
+
+		annotation SummarizationSetBy = Automatic
+
+	column RestockLevel
+		dataType: int64
+		formatString: 0
+		lineageTag: debbaa2e-dde7-4701-be6c-102d0e71ef07
+		summarizeBy: none
+		sourceColumn: RestockLevel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discontinued
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 964d1a18-ca9d-4337-a678-af7ecba2a9e9
+		summarizeBy: none
+		sourceColumn: Discontinued
+
+		annotation SummarizationSetBy = Automatic
+
+	column Warehouse
+		dataType: string
+		lineageTag: d0a5aaa8-0711-423a-8175-ef24ed5fb562
+		summarizeBy: none
+		sourceColumn: Warehouse
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weight
+		dataType: double
+		lineageTag: 2f6b3129-11c3-436d-ab8e-63cfa6c0cf2a
+		summarizeBy: none
+		sourceColumn: Weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("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", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ProductID = _t, ProductName = _t, Category = _t, Price = _t, StockQuantity = _t, Supplier = _t, RestockLevel = _t, Discontinued = _t, Warehouse = _t, Weight = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"ProductID", Int64.Type}, {"ProductName", type text}, {"Category", type text}, {"Price", type number}, {"StockQuantity", Int64.Type}, {"Supplier", type text}, {"RestockLevel", Int64.Type}, {"Discontinued", type logical}, {"Warehouse", type text}, {"Weight", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

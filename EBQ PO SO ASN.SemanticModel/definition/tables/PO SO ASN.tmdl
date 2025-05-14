@@ -1,0 +1,470 @@
+/// SELECT
+/// PARSE_TIMESTAMP('%d-%b-%Y %I:%M:%S %p', shipped_date) AS shipped_date,
+/// PARSE_TIMESTAMP('%d-%b-%Y %I:%M:%S %p', asn_creation_date) AS asn_creation_date,
+/// PARSE_DATE('%d-%b-%Y', so_line_ssd) AS so_line_ssd,
+/// PARSE_DATE('%d-%b-%Y', planned_delivery_date) AS planned_delivery_date,
+/// *
+/// EXCEPT (asn_creation_date, shipped_date, so_line_ssd, planned_delivery_date)
+/// FROM
+/// " & source_project & ".it_supplychain_us.po_so_asn_report
+table 'PO SO ASN'
+	lineageTag: 246fdd0c-d11a-4f66-ae7d-2a008cd86a1d
+
+	column 'Customer Name'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Customer
+		lineageTag: 24aea92d-76de-4935-8d6c-07bb2d35a6ef
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Ship To Location'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Customer
+		lineageTag: 73b79cd8-72bb-478f-9d9e-f310621b6a21
+		summarizeBy: none
+		sourceColumn: Customer Ship To Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Customer
+		lineageTag: 8585294c-3cb2-42c1-802b-5f2cb2ebff33
+		summarizeBy: none
+		sourceColumn: Customer Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer PO Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Customer
+		lineageTag: 2b720574-037d-43a2-b528-0131451a7abe
+		summarizeBy: none
+		sourceColumn: Customer PO Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Order Number'
+		dataType: double
+		formatString: 0
+		sourceProviderType: double
+		displayFolder: Sales Order Details
+		lineageTag: 855396b3-b191-4e09-b86d-6c8ff0e7c63d
+		summarizeBy: none
+		sourceColumn: Sales Order Number
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Sales Order Line Number'
+		dataType: double
+		formatString: 0
+		sourceProviderType: double
+		displayFolder: Sales Order Details
+		lineageTag: 3921207a-0319-4fa5-9a14-6fe35c48aab8
+		summarizeBy: none
+		sourceColumn: Sales Order Line Number
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'SO Line SSD'
+		dataType: dateTime
+		formatString: dd-mmm-yy
+		sourceProviderType: datetime2
+		displayFolder: Sales Order Details
+		lineageTag: fd9a2548-5422-483e-89b5-6de64a464742
+		summarizeBy: none
+		sourceColumn: SO Line SSD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'PO Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Purchase Order
+		lineageTag: 065336fd-17d2-49d5-a08b-a94fd0895fb1
+		summarizeBy: none
+		sourceColumn: PO Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Line Number'
+		dataType: double
+		formatString: 0
+		sourceProviderType: double
+		displayFolder: Purchase Order
+		lineageTag: 03bc6f53-5c96-4500-9d73-5292579e64c0
+		summarizeBy: none
+		sourceColumn: PO Line Number
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'PO Shipment Number'
+		dataType: double
+		formatString: 0
+		sourceProviderType: double
+		displayFolder: Purchase Order
+		lineageTag: f7a6f7a2-c440-49b1-a02f-5391c9272372
+		summarizeBy: none
+		sourceColumn: PO Shipment Number
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'PO Line Ordered Quantity'
+		dataType: double
+		formatString: 0
+		sourceProviderType: double
+		displayFolder: Purchase Order
+		lineageTag: b0a57292-1f08-421d-b820-a79e6efaab04
+		summarizeBy: none
+		sourceColumn: PO Line Ordered Quantity
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'ASN Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: ASN
+		lineageTag: 4bfbb17c-2882-4011-9ee6-06fbb90b5c9c
+		summarizeBy: none
+		sourceColumn: ASN Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ASN Line Number'
+		dataType: double
+		formatString: 0
+		sourceProviderType: double
+		displayFolder: ASN
+		lineageTag: 872d528b-4fba-4086-a423-340e91c0a5cb
+		summarizeBy: none
+		sourceColumn: ASN Line Number
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'ASN Line Quantity'
+		dataType: double
+		formatString: 0
+		sourceProviderType: double
+		displayFolder: ASN
+		lineageTag: 06d09c25-a51c-4c19-b2c0-f62aebf8fd26
+		summarizeBy: none
+		sourceColumn: ASN Line Quantity
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Zebra Part Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 892e1039-75e6-4856-992f-967f9e7c2def
+		summarizeBy: none
+		sourceColumn: Zebra Part Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Organization Code'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 35d33c9f-fe3a-4967-8632-ae96b9e5f04f
+		summarizeBy: none
+		sourceColumn: Organization Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supplier Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 354bafa9-913d-425c-bbd8-b5a589b82a52
+		summarizeBy: none
+		sourceColumn: Supplier Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supplier Name'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 8f96eb96-1e4b-444a-936f-61458206bbef
+		summarizeBy: none
+		sourceColumn: Supplier Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Carrier Name'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: ba223687-f4fa-4051-9ad3-e7b9af247199
+		summarizeBy: none
+		sourceColumn: Carrier Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipment Method'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 3c961207-03a9-4f7d-bc78-eec7d6a02e85
+		summarizeBy: none
+		sourceColumn: Shipment Method
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tracking Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: c4b44f7f-0cea-4213-94bf-bead53949e66
+		summarizeBy: none
+		sourceColumn: Tracking Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipped Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		displayFolder: Shipment
+		lineageTag: 03a17e20-8958-4b76-bbae-4767e7b56a5a
+		summarizeBy: none
+		sourceColumn: Shipped Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planned Delivery Date'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: a58cd190-1992-4ab7-8a1f-20076a4d16be
+		summarizeBy: none
+		sourceColumn: Planned Delivery Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipment Line Status'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 1c0ce3ef-f30d-4c5d-88b2-5208c8683ee7
+		summarizeBy: none
+		sourceColumn: Shipment Line Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Type'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Purchase Order
+		lineageTag: e0facf50-5760-4cad-bf6a-5acabaddba40
+		summarizeBy: none
+		sourceColumn: Order Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cross Dock DS Description'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 1f3d741f-c4f4-4b5b-8f9a-36ddd8b46a5f
+		summarizeBy: none
+		sourceColumn: Cross Dock DS Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Country'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Customer
+		lineageTag: 1fda3b07-fa33-4de1-8f7a-38cf40ffd5b5
+		summarizeBy: none
+		sourceColumn: Customer Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country Of Origin'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: a481d202-0741-44fc-b9c8-e9716416baa8
+		summarizeBy: none
+		sourceColumn: Country Of Origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ASN Creation Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		displayFolder: ASN
+		lineageTag: 74f9c156-3eb5-41db-ba7f-2b2b5b801299
+		summarizeBy: none
+		sourceColumn: ASN Creation Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Oracle Line Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 0e1bfdd2-d3a3-4cb6-8712-82afbbf8bf0a
+		summarizeBy: none
+		sourceColumn: Oracle Line Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Oracle Line ID'
+		dataType: double
+		formatString: 0
+		sourceProviderType: decimal(38, 9)
+		displayFolder: Shipment
+		lineageTag: 399edd81-1484-4221-bf7d-2ca3089f7ba5
+		summarizeBy: none
+		sourceColumn: Oracle Line ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Order Line Status'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Purchase Order
+		lineageTag: 1e38e515-cf72-47e7-a119-dffde67d15ff
+		summarizeBy: none
+		sourceColumn: Order Line Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Receipt Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Purchase Order
+		lineageTag: 1f4d950a-3da4-4c3f-9b00-621a0b026b66
+		summarizeBy: none
+		sourceColumn: Receipt Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Header Status'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Purchase Order
+		lineageTag: b45c14a1-8e7c-4e3a-9985-54974614e805
+		summarizeBy: none
+		sourceColumn: Order Header Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Creation Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		displayFolder: Purchase Order
+		lineageTag: f2e0ec73-4234-4ce2-9921-21b147165cd1
+		summarizeBy: none
+		sourceColumn: PO Creation Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Container Number'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Shipment
+		lineageTag: 82dc19ad-bde0-457a-a331-179ed4f15f2f
+		summarizeBy: none
+		sourceColumn: Container Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Description'
+		dataType: string
+		sourceProviderType: nvarchar(16384)
+		displayFolder: Purchase Order
+		lineageTag: 4d00c013-ddce-499a-89b9-496435e7706d
+		summarizeBy: none
+		sourceColumn: PO Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PO Unit Price'
+		dataType: double
+		sourceProviderType: double
+		displayFolder: Purchase Order
+		lineageTag: ee9ff158-38aa-4159-8fd1-dcf192840dd1
+		summarizeBy: none
+		sourceColumn: PO Unit Price
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'PO SO ASN' = m
+		mode: directQuery
+		queryGroup: Main
+		source = ```
+				let
+				    query = "SELECT DISTINCT
+				    shipped_date,
+				    asn_creation_date,
+				    so_line_ssd,
+				    planned_delivery_date,
+				    *
+				    EXCEPT (asn_creation_date, shipped_date, so_line_ssd, planned_delivery_date)
+				    FROM 
+				    it_supplychain_us.po_so_asn_report
+				    ",
+				    Source = Value.NativeQuery(
+				        GoogleBigQuery.Database([UseStorageApi=false, BillingProject=billing_project]){[Name=source_project]}[Data], 
+				        query, 
+				
+				        null, 
+				        [EnableFolding=true]
+				    ),
+				    RenamedColumns = let
+				        result = List.Accumulate(
+				            Table.ToRecords(
+				                Table.SelectRows(
+				                    #"pbi_rename_table", 
+				                    each ([zdl_table_name] = "gold_supplychain_prod.po_so_asn_report" and [pbi_table_name] = "PO SO ASN")
+				                )
+				            ), 
+				            [Table = Source , RenamedColumns = {}], 
+				            (state, current) => if List.Contains(Table.ColumnNames(state[Table]), current[zdl_column_name]) 
+				                                 then [Table = Table.RenameColumns(state[Table], {{current[zdl_column_name], current[pbi_column_name]}}), 
+				                                       RenamedColumns = state[RenamedColumns] & {current[pbi_column_name]}] 
+				                                 else state
+				        )
+				    in
+				        Table.SelectColumns(result[Table], result[RenamedColumns])
+				in
+				    RenamedColumns
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

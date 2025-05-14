@@ -1,0 +1,83 @@
+table pbi_rename_table
+	isHidden
+	lineageTag: b2c07675-d586-4028-ab98-72f3a3420296
+
+	column pbi_semantic_model
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(16384)
+		lineageTag: 082272e2-9c55-4611-901b-f6658c875cbc
+		summarizeBy: none
+		sourceColumn: pbi_semantic_model
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column zdl_table_name
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(16384)
+		lineageTag: 5658761d-f9cf-4e30-9921-c5eef4100743
+		summarizeBy: none
+		sourceColumn: zdl_table_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column zdl_column_name
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(16384)
+		lineageTag: caf13de1-c420-4153-b109-8394b7c0404c
+		summarizeBy: none
+		sourceColumn: zdl_column_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pbi_table_name
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(16384)
+		lineageTag: fb49914e-26c3-4762-82fa-3ea5035be082
+		summarizeBy: none
+		sourceColumn: pbi_table_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pbi_column_name
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(16384)
+		lineageTag: 20dece57-714a-4172-ac1f-67f4659b0a60
+		summarizeBy: none
+		sourceColumn: pbi_column_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pbi_rename_table = m
+		mode: import
+		queryGroup: 'Renaming Table'
+		source =
+				let
+				    Source = GoogleBigQuery.Database([UseStorageApi=false, BillingProject=billing_project]),
+				    #"its-managed-dbx-de-01-p" = Source{[Name=source_project]}[Data],
+				    it_master_us_Schema = #"its-managed-dbx-de-01-p"{[Name="it_master_us",Kind="Schema"]}[Data],
+				    pbi_rename_table_Table = it_master_us_Schema{[Name="pbi_rename_table",Kind="Table"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(pbi_rename_table_Table, each ([pbi_semantic_model] = "EBQ PO SO ASN"))
+				in
+				    #"Filtered Rows"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

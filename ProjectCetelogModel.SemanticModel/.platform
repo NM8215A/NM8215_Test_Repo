@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ProjectCetelogModel"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "663cf0e6-6f2c-9be3-4e14-e1ceebdf2f8a"
+  }
+}

@@ -1,0 +1,9 @@
+relationship ebe57bc4-4e64-4aaa-b5d6-f36a6a55866b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Sales.SaleDate
+	toColumn: LocalDateTable_956025ac-cd73-4d98-93cd-71e559701f05.Date
+
+relationship AutoDetected_20e226db-53d0-4213-880e-46302f76ccc7
+	fromColumn: Sales.ProductID
+	toColumn: Products.ProductID
+

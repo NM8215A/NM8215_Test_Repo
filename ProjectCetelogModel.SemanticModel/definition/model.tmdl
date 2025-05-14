@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Product Catelog","Product Review"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.138.1203.0 (24.11)
+
+ref table 'Product Catelog'
+ref table 'Product Review'
+ref table DateTableTemplate_32cf26c6-b6c2-4914-8e4b-454510b95316
+ref table LocalDateTable_cd870701-9118-42c6-b647-3f30a70cb134
+
+ref cultureInfo en-US
+

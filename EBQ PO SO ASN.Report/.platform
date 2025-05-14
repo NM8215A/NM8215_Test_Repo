@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "EBQ PO SO ASN"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9e1810ae-6428-901c-4b16-611f78332d86"
+  }
+}

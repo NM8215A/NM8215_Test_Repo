@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "EBQ PO SO ASN"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7305a316-decc-aeae-4bf9-98059e666be4"
+  }
+}
